@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
+import { AppConfigurationModule } from '@core/configuration/configuration.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
-  imports: [
-    // Using CQRS pattern
-    CqrsModule.forRoot(),
-  ],
+  imports: [CqrsModule.forRoot(), AppConfigurationModule],
   controllers: [AppController],
   providers: [AppService],
 })
