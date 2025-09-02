@@ -16,6 +16,9 @@ import joi from 'joi';
           .valid('development', 'production')
           .default('development'),
         PORT: joi.number().port().default(3000),
+
+        // Database
+        DATABASE_URL: joi.string().required(),
       }),
       // Load different environment variables files based on the environment
       envFilePath: [
