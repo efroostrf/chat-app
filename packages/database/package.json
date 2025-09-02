@@ -1,0 +1,30 @@
+{
+  "name": "@chat-app/database",
+  "version": "1.0.0",
+  "description": "Database for Chat App",
+  "author": "Yefrosynii Kolenko <contact@yefro.dev>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "db:build": "tsc",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "database",
+    "prisma"
+  ],
+  "packageManager": "pnpm@10.11.0",
+  "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "prisma": "^6.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
