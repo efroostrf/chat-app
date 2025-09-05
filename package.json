@@ -4,13 +4,20 @@
   "description": "Chat App",
   "main": "index.js",
   "scripts": {
-    "coverage:merge": "node utils/coverage-manager.js"
+    "build": "turbo build",
+    "start:dev": "turbo start:dev",
+    "db:build": "turbo db:build",
+    "db:generate": "turbo db:generate",
+    "db:push": "turbo db:push",
+    "db:migrate": "turbo db:migrate",
+    "test:cov": "turbo test:cov && node utils/coverage-manager.js"
   },
   "keywords": [],
   "author": "Yefrosynii Kolenko <contact@yefro.dev>",
   "license": "MIT",
   "packageManager": "pnpm@10.11.0",
   "devDependencies": {
-    "glob": "^11.0.3"
+    "glob": "^11.0.3",
+    "turbo": "^2.5.6"
   }
 }

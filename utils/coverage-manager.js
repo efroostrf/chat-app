@@ -19,6 +19,27 @@ const getLcovFiles = function () {
 };
 
 /**
+ * Adjusts file paths in lcov.info content to be relative to project root.
+ * @param {string} content - The lcov.info file content
+ * @param {string} filePath - The path to the lcov.info file
+ * @returns {string} The adjusted content with correct paths
+ */
+function adjustPaths(content, filePath) {
+  // Extract the directory path where the lcov.info file is located
+  // e.g., "apps/backend/coverage/lcov.info" -> "apps/backend"
+  const coverageDir = path.dirname(filePath);
+  const projectDir = coverageDir.replace("/coverage", "");
+
+  // Replace SF: lines to include the correct project-relative path
+  return content.replace(/^SF:(.+)$/gm, (match, relativePath) => {
+    // Convert relative path to absolute project path
+    // e.g., "src/app.controller.ts" -> "apps/backend/src/app.controller.ts"
+    const adjustedPath = path.join(projectDir, relativePath);
+    return `SF:${adjustedPath}`;
+  });
+}
+
+/**
  * Creates a temp directory for all the reports.
  * @returns {Promise<void>} A promise that resolves when the directory has been created.
  */
@@ -43,9 +64,12 @@ async function createTempDir() {
     // Create temp directory
     await createTempDir();
 
-    // Read all files and join their contents
+    // Read all files, adjust paths, and join their contents
     const mergedReport = await Promise.all(
-      files.map((file) => fs.readFile(file, "utf-8"))
+      files.map(async (file) => {
+        const content = await fs.readFile(file, "utf-8");
+        return adjustPaths(content, file);
+      })
     ).then((contents) => contents.join(""));
 
     console.log(BLUE, `Copying the coverage report…`);
