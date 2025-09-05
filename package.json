@@ -4,10 +4,13 @@
   "description": "Chat App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coverage:merge": "node utils/coverage-manager.js"
   },
   "keywords": [],
   "author": "Yefrosynii Kolenko <contact@yefro.dev>",
   "license": "MIT",
-  "packageManager": "pnpm@10.11.0"
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "glob": "^11.0.3"
+  }
 }

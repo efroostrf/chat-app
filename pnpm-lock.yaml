@@ -6,7 +6,11 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      glob:
+        specifier: ^11.0.3
+        version: 11.0.3
 
   apps/backend:
     dependencies:
