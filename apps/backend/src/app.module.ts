@@ -5,12 +5,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { AppConfigurationModule } from '@core/configuration/configuration.module';
 import { DatabaseModule } from '@core/database/database.module';
 import { CacheModule } from '@core/cache/cache.module';
-
-// controllers
-import { AppController } from './app.controller';
-
-// services
-import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,8 +13,11 @@ import { AppService } from './app.service';
     AppConfigurationModule,
     DatabaseModule,
     CacheModule,
+
+    // modules
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
