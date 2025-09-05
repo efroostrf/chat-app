@@ -6,12 +6,6 @@ import { AppConfigurationModule } from '@core/configuration/configuration.module
 import { DatabaseModule } from '@core/database/database.module';
 import { CacheModule } from '@core/cache/cache.module';
 
-// controllers
-import { AppController } from './app.controller';
-
-// services
-import { AppService } from './app.service';
-
 @Module({
   imports: [
     CqrsModule.forRoot(),
@@ -19,7 +13,7 @@ import { AppService } from './app.service';
     DatabaseModule,
     CacheModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
