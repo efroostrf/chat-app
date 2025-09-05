@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DatabaseService } from './database.service';
-import { DatabaseModule } from './database.module';
+import { DatabaseService } from '../database.service';
+import { DatabaseModule } from '../database.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 

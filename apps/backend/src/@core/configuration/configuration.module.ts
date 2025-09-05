@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigModuleOptions } from '@nestjs/config';
+
+// schema
 import ENVIRONMENT_VARIABLES_SCHEMA from './configuration.schema';
 
 export const CONFIG_MODULE_OPTIONS: ConfigModuleOptions = {

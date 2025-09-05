@@ -1,11 +1,15 @@
 import ENVIRONMENT_VARIABLES_SCHEMA, {
   EnvironmentVariables,
-} from './configuration.schema';
+} from '../configuration.schema';
 
 export const VALID_ENVS: EnvironmentVariables = {
   NODE_ENV: 'testing',
   PORT: 3001,
   DATABASE_URL: 'postgresql://user:password@localhost:5432/test_db',
+  REDIS_HOST: 'localhost',
+  REDIS_PORT: 6379,
+  REDIS_PASSWORD: 'password',
+  REDIS_DEFAULT_TTL: 3600,
 };
 
 describe('AppConfigurationModule', () => {

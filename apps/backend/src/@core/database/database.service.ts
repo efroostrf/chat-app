@@ -4,8 +4,10 @@ import {
   OnModuleDestroy,
   OnModuleInit,
 } from '@nestjs/common';
-import { PrismaClient } from '@chat-app/database';
 import { ConfigService } from '@nestjs/config';
+
+// database
+import { PrismaClient } from '@chat-app/database';
 
 @Injectable()
 export class DatabaseService
