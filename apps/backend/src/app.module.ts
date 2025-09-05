@@ -5,6 +5,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { AppConfigurationModule } from '@core/configuration/configuration.module';
 import { DatabaseModule } from '@core/database/database.module';
 import { CacheModule } from '@core/cache/cache.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,6 +13,9 @@ import { CacheModule } from '@core/cache/cache.module';
     AppConfigurationModule,
     DatabaseModule,
     CacheModule,
+
+    // modules
+    AuthModule,
   ],
   controllers: [],
   providers: [],

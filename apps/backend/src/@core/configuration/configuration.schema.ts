@@ -3,11 +3,14 @@ import joi from 'joi';
 export type EnvironmentVariables = {
   NODE_ENV: string;
   PORT: number;
+  APP_URL: string;
   DATABASE_URL: string;
   REDIS_HOST: string;
   REDIS_PORT: number;
   REDIS_PASSWORD: string;
   REDIS_DEFAULT_TTL: number;
+  AUTH_GITHUB_CLIENT_ID: string;
+  AUTH_GITHUB_CLIENT_SECRET: string;
 };
 
 const ENVIRONMENT_VARIABLES_SCHEMA = joi.object<EnvironmentVariables>({
@@ -16,6 +19,8 @@ const ENVIRONMENT_VARIABLES_SCHEMA = joi.object<EnvironmentVariables>({
     .valid('development', 'production', 'testing')
     .default('development'),
   PORT: joi.number().port().min(1).default(3000),
+
+  APP_URL: joi.string().uri().default('http://localhost:3000'),
 
   // Database
   DATABASE_URL: joi
@@ -34,6 +39,10 @@ const ENVIRONMENT_VARIABLES_SCHEMA = joi.object<EnvironmentVariables>({
   REDIS_PORT: joi.number().port().min(1).default(6379),
   REDIS_PASSWORD: joi.string().optional(),
   REDIS_DEFAULT_TTL: joi.number().integer().min(1).default(3600),
+
+  // Oauth configs
+  AUTH_GITHUB_CLIENT_ID: joi.string().required(),
+  AUTH_GITHUB_CLIENT_SECRET: joi.string().required(),
 });
 
 export default ENVIRONMENT_VARIABLES_SCHEMA;

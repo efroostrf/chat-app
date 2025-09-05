@@ -20,5 +20,22 @@ model User {
     updatedAt   DateTime  @updatedAt
     lastLoginAt DateTime?
 
+    accounts Account[]
+
     @@index([email])
+}
+
+enum AccountProvider {
+    GITHUB
+}
+
+model Account {
+    id                String          @id @default(uuid())
+    userId            String
+    provider          AccountProvider
+    providerAccountId String
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
 }
